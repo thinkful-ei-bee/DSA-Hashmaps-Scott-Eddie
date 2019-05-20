@@ -137,3 +137,26 @@ function permPal(string) {
 }
 
 console.log(permPal('north'));
+
+//6.
+
+function anaGroup(strings) {
+  const map = new Map();
+
+  strings.forEach(string => {
+    let key = string.split('').sort().join('');
+    if (map.has(key)) {
+      map.set(key, [...map.get(key),string]);
+    } else {
+      map.set(key, [string]);
+    }
+  });
+
+  const res = [];
+
+  map.forEach(value => res.push(value));
+
+  return res;
+}
+
+console.log(anaGroup(['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']));
