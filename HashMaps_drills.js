@@ -115,3 +115,25 @@ function removeDupes(string){
 console.log(removeDupes('google all that you think can think of'));
 
 //5.
+
+function permPal(string) {
+  const map = new Map();
+  map.set('odds', 0);
+  for (let i = 0; i < string.length; i++) {
+    if(map.has(string[i])){
+      map.set(string[i], map.get(string[i])+1);
+      if (map.get(string[i]) % 2 === 0) {
+        map.set('odds', map.get('odds')-1);
+      } else {
+        map.set('odds', map.get('odds')+1);
+      }
+    } else{
+      map.set(string[i], 1);
+      map.set('odds', map.get('odds')+1);
+    }
+  }
+
+  return map.get('odds') <= 1;
+}
+
+console.log(permPal('north'));
